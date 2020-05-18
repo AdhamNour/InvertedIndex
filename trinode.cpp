@@ -12,12 +12,12 @@ TrieNode::~TrieNode()
 		delete FileNames;
 }
 
-void TrieNode::AddWord(const string &word, const string &FileName, unsigned int index)
+void TrieNode::AddWord(const QString &word, const QString &FileName, unsigned int index)
 {
 	if (index >= word.size()){
 		this->isCompleteWord = true;
 		if (this->FileNames == nullptr){
-			this->FileNames = new set<string>;
+            this->FileNames = new set<QString>;
 		}
 		this->FileNames->insert(FileName);
 		return;
@@ -32,7 +32,7 @@ void TrieNode::AddWord(const string &word, const string &FileName, unsigned int 
 	}
 
 }
-set<string>* TrieNode::getContainingFileNames(const string&TargetWord, unsigned int index)
+set<QString>* TrieNode::getContainingFileNames(const QString&TargetWord, unsigned int index)
 {
 
 	if ((this->isCompleteWord) && (index == TargetWord.size()))

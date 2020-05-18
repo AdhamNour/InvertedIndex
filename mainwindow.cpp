@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     openNewTab();
 
-    QTabBar* u = ui->tabWidget->tabBar();
+    //QTabBar* u = ui->tabWidget->tabBar();
 
 
 //    QPushButton* p = new QPushButton("+");
