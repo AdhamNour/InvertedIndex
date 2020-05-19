@@ -20,6 +20,8 @@ public:
 private slots:
     void on_AddDirectoryButton_clicked();
 
+    void on_SearchButton_clicked();
+
 private:
     Ui::TabContentWidget *ui;
     TrieNode ourMightyTrie;

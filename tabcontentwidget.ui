@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>696</width>
-    <height>482</height>
+    <width>917</width>
+    <height>586</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -66,13 +66,7 @@
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
-        <widget class="QTreeWidget" name="FilesHierarchyTreeView">
-         <column>
-          <property name="text">
-           <string notr="true">1</string>
-          </property>
-         </column>
-        </widget>
+        <widget class="QListWidget" name="listWidget"/>
         <widget class="QTextBrowser" name="textBrowser"/>
        </widget>
       </item>
@@ -82,7 +76,7 @@
    <item>
     <widget class="QLabel" name="LoadingAddressLabel">
      <property name="text">
-      <string>Loading From :\</string>
+      <string>Loading From :</string>
      </property>
     </widget>
    </item>
