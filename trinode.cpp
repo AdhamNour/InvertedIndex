@@ -1,4 +1,6 @@
 #include "trinode.h"
+#include <QFile>
+#include<QTextStream>
 TrieNode::TrieNode()
 {
 
@@ -12,7 +14,7 @@ TrieNode::~TrieNode()
 		delete FileNames;
 }
 
-void TrieNode::AddWord(const QString &word, const QString &FileName, unsigned int index)
+void TrieNode::AddWord(const QString &word, const QString &FileName,  int index)
 {
 	if (index >= word.size()){
 		this->isCompleteWord = true;
@@ -32,7 +34,7 @@ void TrieNode::AddWord(const QString &word, const QString &FileName, unsigned in
 	}
 
 }
-set<QString>* TrieNode::getContainingFileNames(const QString&TargetWord, unsigned int index)
+set<QString>* TrieNode::getContainingFileNames(const QString&TargetWord,  int index)
 {
 
 	if ((this->isCompleteWord) && (index == TargetWord.size()))
@@ -56,4 +58,25 @@ set<QString>* TrieNode::getContainingFileNames(const QString&TargetWord, unsigne
 		return nullptr;
 	}
 
+}
+ void TrieNode::saveTrie(QString word) {
+
+     if(this->isCompleteWord){
+        QFile save_file("E:\\Data Structure\\build-InvertedIndexProject-Desktop_Qt_5_14_2_MinGW_64_bit-Debug\\debug\\our_mighty_trie.sav");
+        if(!save_file.open(QFile::Append|QFile::Text)){
+            cout<<"err"<<endl;
+        } else if(!save_file.open(QFile::WriteOnly|QFile::Text)){
+            cout<<"err2"<<endl;
+        }
+        QTextStream in(&save_file);
+        QString files;
+         for(auto file:*this->FileNames){
+             files += file+",";
+         }
+         in<<word<<" "<<files;
+
+}
+     for(auto child : this->ChildNodes){
+        child.second->saveTrie(word + child.first);
+     }
 }

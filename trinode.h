@@ -14,9 +14,10 @@ private:
 public:
 	TrieNode();
 	~TrieNode();
-    void AddWord(const QString& word, const QString& FileName, unsigned int index = 0);
+    void AddWord(const QString& word, const QString& FileName,  int index = 0);
     map<QChar, TrieNode*>* getChildNods(){ return &ChildNodes; }
 	bool IsCompleteWord(){ return isCompleteWord; }
-    set<QString>* getContainingFileNames(const QString &TargetWord, unsigned int index = 0);
+    set<QString>* getContainingFileNames(const QString &TargetWord,  int index = 0);
+    void saveTrie( QString word = "");
 };
 #endif // TRIENODE_H

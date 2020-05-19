@@ -42,4 +42,5 @@ void TabContentWidget::on_AddDirectoryButton_clicked()
 
     }
     cout<<"end"<<endl;
+    ourMightyTrie.saveTrie();
 }
