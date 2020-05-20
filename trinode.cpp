@@ -73,7 +73,7 @@ set<QString>* TrieNode::getContainingFileNames(const QString&TargetWord,  int in
          for(auto file:*this->FileNames){
              files += file+",";
          }
-         in<<word<<" "<<files;
+         in<<word<<" "<<files<<"\n";
 
 }
      for(auto child : this->ChildNodes){
