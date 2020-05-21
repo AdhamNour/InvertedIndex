@@ -3,8 +3,7 @@
 
 #include <QWidget>
 #include <QFileDialog>
-#include "trinode.h"
-
+#include"trinode.h"
 namespace Ui {
 class TabContentWidget;
 }
@@ -21,6 +20,8 @@ private slots:
     void on_AddDirectoryButton_clicked();
 
     void on_SearchButton_clicked();
+public slots:
+    void showProgess(int i);
 
 private:
     Ui::TabContentWidget *ui;

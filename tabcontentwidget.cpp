@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <QFile>
 #include"trinode.h"
+#include<QMessageBox>
 using namespace std;
 TabContentWidget::TabContentWidget(QWidget *parent) :
     QWidget(parent),
@@ -23,9 +24,15 @@ void TabContentWidget::on_AddDirectoryButton_clicked()
 {
     cout<<"start"<<endl;
     QString Address = QFileDialog::getExistingDirectory(this,"select directory",QDir::currentPath());
+    ui->AddressLineEdit->setText(Address);
+    ui->AddressLineEdit->setEnabled(false);
     QDir dir(Address);
     QFileInfoList qsl = dir.entryInfoList();
     ui->LoadingAddressLabel->setText(ui->LoadingAddressLabel->text()+Address);    ui->progressBar->setRange(0,qsl.size()-2);
+//    Thread *Adham=new Thread(this);
+//    int progress =0;
+//    connect(Adham, SIGNAL(percent(progress)),this,SLOT(showProgress(progess)));
+//    Adham->start();
     for (int i = 0;i<qsl.size();i++) {
         QFile file(qsl.at(i).absoluteFilePath());
         if(!file.open(QFile::ReadOnly|QFile::Text)){
@@ -46,15 +53,18 @@ void TabContentWidget::on_AddDirectoryButton_clicked()
 
     }
     cout<<"end"<<endl;
-    //ourMightyTrie.saveTrie();
+    ourMightyTrie.saveTrie();
 }
-
+void TabContentWidget::showProgess(int i){
+    ui->progressBar->setValue(i);
+}
 void TabContentWidget::on_SearchButton_clicked()
 {
-    QString s = ui->TargetWordLineEdit->text();
-    QFileInfoList* fl = ourMightyTrie.getContainingFiles(s);
+    ui->listWidget->clear();
+    QFileInfoList* fl = ourMightyTrie.getContainingFiles(ui->TargetWordLineEdit->text());
     if(fl == nullptr){
         cout<<"error in searching"<<endl;
+        QMessageBox::warning(this,"TakeCare","The desigred word doesn't exist");
         return;
     }
     for (int i = 0 ;  i < fl->size() ; i++) {
