@@ -27,7 +27,10 @@ private slots:
 public slots:
     void showProgess(int);
 
+signals:
+    void Event(QKeyEvent*);
 private:
+
     Ui::TabContentWidget *ui;
     TrieNode ourMightyTrie;
 };

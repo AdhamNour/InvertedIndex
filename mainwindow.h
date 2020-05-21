@@ -5,6 +5,7 @@
 #include<QKeyEvent>
 #include<QString>
 #include<set>
+#include"tabcontentwidget.h"
 
 using namespace std;
 QT_BEGIN_NAMESPACE
@@ -27,8 +28,13 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    set<TabContentWidget*> openedTab;
+
+
     void openNewTab();
     void closeTab(const int& index);
+public slots:
+    void onKeyEvent2(QKeyEvent*);
 
 };
 #endif // MAINWINDOW_H

@@ -29,6 +29,11 @@ void TabContentWidget::keyPressEvent(QKeyEvent *event)
         cout<<ui->TargetWordLineEdit->text().toStdString()<<endl;
         on_SearchButton_clicked();
     }
+    else{
+        emit Event(event);
+    }
+
+
 }
 
 void TabContentWidget::on_AddDirectoryButton_clicked()
@@ -41,31 +46,10 @@ void TabContentWidget::on_AddDirectoryButton_clicked()
     QFileInfoList qsl = dir.entryInfoList();
     ui->LoadingAddressLabel->setText("Loading from :"+Address);
     ui->progressBar->setRange(0,qsl.size()-2);
+
     Adham->Address=Address;
     Adham->ourMightyTrie=&ourMightyTrie;
     Adham->start();
-//    for (int i = 0;i<qsl.size();i++) {
-//        QFile file(qsl.at(i).absoluteFilePath());
-//        if(!file.open(QFile::ReadOnly|QFile::Text)){
-//            cout<<"err"<<endl;
-//            continue;
-//        }
-//        ui->progressBar->setValue(i);
-//        QTextStream in(&file);
-//        QString word;
-//        while(!in.atEnd()){
-//            in>>word;
-//            if(word.size()==0)
-//                continue;
-//            ourMightyTrie.AddWord(word,qsl.at(i));
-
-//        }
-
-
-//    }
-//    cout<<"end"<<endl;
-//    ui->LoadingAddressLabel->setText("Done");
-//    ourMightyTrie.saveTrie();
 }
 
 
