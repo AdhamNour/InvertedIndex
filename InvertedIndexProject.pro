@@ -19,12 +19,14 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     tabcontentwidget.cpp \
-    trinode.cpp
+    trinode.cpp \
+    thread.cpp\
 
 HEADERS += \
     mainwindow.h \
     tabcontentwidget.h \
-    trinode.h
+    trinode.h \
+    thread.h\
 
 FORMS += \
     mainwindow.ui \

@@ -63,7 +63,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 void MainWindow::openNewTab()
 {
-    ui->tabWidget->addTab(new TabContentWidget(),QString("Project %0").arg(ui->tabWidget->count()+1));
+    ui->tabWidget->addTab(new TabContentWidget(this),QString("Project %0").arg(ui->tabWidget->count()+1));
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
 }
 

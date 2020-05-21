@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QFileDialog>
 #include"trinode.h"
+#include "thread.h"
 namespace Ui {
 class TabContentWidget;
 }
@@ -15,13 +16,16 @@ class TabContentWidget : public QWidget
 public:
     explicit TabContentWidget(QWidget *parent = nullptr);
     ~TabContentWidget();
+    Thread* Adham;
+    void keyPressEvent(QKeyEvent* event);
+
 
 private slots:
     void on_AddDirectoryButton_clicked();
 
     void on_SearchButton_clicked();
 public slots:
-    void showProgess(int i);
+    void showProgess(int);
 
 private:
     Ui::TabContentWidget *ui;
