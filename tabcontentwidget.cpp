@@ -67,6 +67,23 @@ void TabContentWidget::on_SearchButton_clicked()
         return;
     }
     for (int i = 0 ;  i < fl->size() ; i++) {
-        ui->listWidget->addItem(fl->at(i).completeBaseName());
+        ui->listWidget->addItem(fl->at(i).absoluteFilePath());
     }
+}
+
+void TabContentWidget::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+    QFile file(item->text());
+    if(!file.open(QFile::ReadOnly)){
+        cout<<"opening file error"<<endl;
+    }
+    QTextStream in(&file);
+    QString s = in.readAll();
+    ui->textBrowser->setHtml(Utils::HighLight(ui->TargetWordLineEdit->text(),s));
+}
+
+void TabContentWidget::on_TargetWordLineEdit_textChanged(const QString &arg1)
+{
+    ui->listWidget->clear();
+
 }

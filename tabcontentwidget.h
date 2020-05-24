@@ -5,6 +5,8 @@
 #include <QFileDialog>
 #include"trinode.h"
 #include "thread.h"
+#include "utils.h"
+#include <QListWidget>
 namespace Ui {
 class TabContentWidget;
 }
@@ -24,6 +26,10 @@ private slots:
     void on_AddDirectoryButton_clicked();
 
     void on_SearchButton_clicked();
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+
+    void on_TargetWordLineEdit_textChanged(const QString &arg1);
+
 public slots:
     void showProgess(int);
 
