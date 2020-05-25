@@ -6,7 +6,10 @@
 #include"trinode.h"
 #include "thread.h"
 #include "utils.h"
+#include "filetrienode.h"
 #include <QListWidget>
+#include<QtConcurrent/QtConcurrent>
+#include <QFileSystemWatcher>
 namespace Ui {
 class TabContentWidget;
 }
@@ -20,6 +23,7 @@ public:
     ~TabContentWidget();
     Thread* Adham;
     void keyPressEvent(QKeyEvent* event);
+    void research();
 
 
 private slots:
@@ -32,13 +36,20 @@ private slots:
 
 public slots:
     void showProgess(int);
+    void DirChange(QString);
 
 signals:
     void Event(QKeyEvent*);
 private:
-
     Ui::TabContentWidget *ui;
     TrieNode ourMightyTrie;
+    FileTrieNode* Files= nullptr;
+    QFileSystemWatcher watcher;
 };
+
+void UpdateTries(TrieNode* ourMightyTrieNode,FileTrieNode* Files,QString Path,TabContentWidget* parent);
+
+void FeedFileTrie(QFileInfoList& l,FileTrieNode*& Files);
+
 
 #endif // TABCONTENTWIDGET_H
