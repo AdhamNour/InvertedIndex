@@ -16,15 +16,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    filetrienode.cpp \
     main.cpp \
     mainwindow.cpp \
     tabcontentwidget.cpp \
-    trinode.cpp
+    trinode.cpp \
+    thread.cpp\
+    utils.cpp\
 
 HEADERS += \
+    filetrienode.h \
     mainwindow.h \
     tabcontentwidget.h \
-    trinode.h
+    trinode.h \
+    thread.h\
+    utils.h
 
 FORMS += \
     mainwindow.ui \

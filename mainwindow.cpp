@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include"tabcontentwidget.h"
 
 #include<QDesktopServices>
 #include<iostream>
@@ -11,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    //connect(ui->tabWidget,SIGNAL(Event(QKeyEvent*)),this,SLOT(onKeyEvent2(QKeyEvent*)));
     openNewTab();
 
     //QTabBar* u = ui->tabWidget->tabBar();
@@ -63,13 +63,21 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 void MainWindow::openNewTab()
 {
-    ui->tabWidget->addTab(new TabContentWidget(),QString("Project %0").arg(ui->tabWidget->count()+1));
+    auto newTab =new TabContentWidget(this);
+    connect(newTab,SIGNAL(Event(QKeyEvent*)),this,SLOT(onKeyEvent2(QKeyEvent*)));
+
+    ui->tabWidget->addTab(newTab,QString("Project %0").arg(ui->tabWidget->count()+1));
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
 }
 
 void MainWindow::closeTab(const int &index)
 {
-    ui->tabWidget->removeTab(index);
+   ui->tabWidget->removeTab(index);
+}
+
+void MainWindow::onKeyEvent2(QKeyEvent* k)
+{
+    keyPressEvent(k);
 }
 
 
