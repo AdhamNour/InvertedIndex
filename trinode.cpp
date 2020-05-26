@@ -61,22 +61,22 @@ QFileInfoList* TrieNode::getContainingFiles(const QString&TargetWord,  int index
 }
  void TrieNode::saveTrie(QString word) {
 
-//     if(this->isCompleteWord){
-//        QFile save_file("E:\\Data Structure\\build-InvertedIndexProject-Desktop_Qt_5_14_2_MinGW_64_bit-Debug\\debug\\our_mighty_trie.sav");
-//        if(!save_file.open(QFile::Append|QFile::Text)){
-//            cout<<"err"<<endl;
-//        } else if(!save_file.open(QFile::WriteOnly|QFile::Text)){
-//            cout<<"err2"<<endl;
-//        }
-//        QTextStream in(&save_file);
-//        QString files;
-//         for(auto file:*this->FileNames){
-//             files += file+",";
-//         }
-//         in<<word<<" "<<files;
+     if(this->isCompleteWord){
+        QFile save_file("E:\\Data Structure\\build-InvertedIndexProject-Desktop_Qt_5_14_2_MinGW_64_bit-Debug\\debug\\our_mighty_trie.sav");
+        if(!save_file.open(QFile::Append|QFile::Text)){
+            cout<<"err"<<endl;
+        } else if(!save_file.open(QFile::WriteOnly|QFile::Text)){
+            cout<<"err2"<<endl;
+        }
+        QTextStream in(&save_file);
+        QString files;
+         for(auto file:*(this->Files)){
+            files += file.baseName()+file.completeSuffix()+",";
+         }
+         in<<word<<" "<<files<<"\n";
 
-//}
-//     for(auto child : this->ChildNodes){
-//        child.second->saveTrie(word + child.first);
-//     }
+}
+     for(auto child : this->ChildNodes){
+        child.second->saveTrie(word + child.first);
+     }
 }
