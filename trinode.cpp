@@ -71,7 +71,7 @@ QFileInfoList* TrieNode::getContainingFiles(const QString&TargetWord,  int index
         QTextStream in(&save_file);
         QString files;
          for(auto file:*(this->Files)){
-            files += file.baseName()+file.completeSuffix()+",";
+            files += file.baseName()+'.'+file.completeSuffix()+",";
          }
          in<<word<<" "<<files<<"\n";
 

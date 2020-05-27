@@ -22,7 +22,9 @@ TabContentWidget::TabContentWidget(QWidget *parent) :
 
 TabContentWidget::~TabContentWidget()
 {
+    ourMightyTrie.saveTrie();
     delete ui;
+
 }
 
 void TabContentWidget::keyPressEvent(QKeyEvent *event)
@@ -84,6 +86,7 @@ void TabContentWidget::DirChange(QString x)
     QtConcurrent::run(UpdateTries,&ourMightyTrie,Files,x,this);
     if(ui->TargetWordLineEdit->text() != "");
         on_SearchButton_clicked();
+
 }
 
 void FeedFileTrie(QFileInfoList &l,FileTrieNode*& Files)
@@ -152,5 +155,5 @@ void UpdateTries(TrieNode *ourMightyTrieNode, FileTrieNode *Files, QString Path 
 
     }
 //    parent->research();
-ourMightyTrieNode->saveTrie();
+
 }

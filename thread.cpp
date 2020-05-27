@@ -29,6 +29,5 @@ void Thread::run(){
 
     }
     cout<<"end"<<endl;
-    ourMightyTrie->saveTrie();
 }
 
