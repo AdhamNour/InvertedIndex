@@ -62,7 +62,7 @@ QFileInfoList* TrieNode::getContainingFiles(const QString&TargetWord,  int index
  void TrieNode::saveTrie(QString word) {
 
      if(this->isCompleteWord){
-        QFile save_file("E:\\Data Structure\\build-InvertedIndexProject-Desktop_Qt_5_14_2_MinGW_64_bit-Debug\\debug\\our_mighty_trie.sav");
+        QFile save_file("/home/adhamnour/");
         if(!save_file.open(QFile::Append|QFile::Text)){
             cout<<"err"<<endl;
         } else if(!save_file.open(QFile::WriteOnly|QFile::Text)){

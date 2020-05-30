@@ -17,6 +17,7 @@ void Thread::run(){
         }
         emit percent(i);
         QTextStream in(&file);
+        in.setCodec("UTF-8");
         QString word;
         while(!in.atEnd()){
             in>>word;

@@ -13,6 +13,7 @@ TabContentWidget::TabContentWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(&watcher,SIGNAL(directoryChanged(QString)),this,SLOT(DirChange(QString)));
+    connect(&futurewatcher,SIGNAL(finished()),this,SLOT(on_SearchButton_clicked()));
 
     ui->progressBar->setValue(0);
     Adham = new Thread(this);
@@ -83,10 +84,8 @@ void TabContentWidget::showProgess(int i){
 
 void TabContentWidget::DirChange(QString x)
 {
-    QtConcurrent::run(UpdateTries,&ourMightyTrie,Files,x,this);
-    if(ui->TargetWordLineEdit->text() != "");
-        on_SearchButton_clicked();
 
+    futurewatcher.setFuture(QtConcurrent::run(UpdateTries,&ourMightyTrie,Files,x,this));
 }
 
 void FeedFileTrie(QFileInfoList &l,FileTrieNode*& Files)

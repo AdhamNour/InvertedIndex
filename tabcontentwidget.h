@@ -10,9 +10,15 @@
 #include <QListWidget>
 #include<QtConcurrent/QtConcurrent>
 #include <QFileSystemWatcher>
+#include<QFutureWatcher>
+#include<QFuture>
+
 namespace Ui {
 class TabContentWidget;
 }
+
+namespace Ui { class MainWindow; }
+
 
 class TabContentWidget : public QWidget
 {
@@ -45,6 +51,7 @@ private:
     TrieNode ourMightyTrie;
     FileTrieNode* Files= nullptr;
     QFileSystemWatcher watcher;
+    QFutureWatcher<void> futurewatcher;
 };
 
 void UpdateTries(TrieNode* ourMightyTrieNode,FileTrieNode* Files,QString Path,TabContentWidget* parent);

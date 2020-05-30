@@ -63,11 +63,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 
 void MainWindow::openNewTab()
 {
-    auto newTab =new TabContentWidget(this);
+    auto newTab =new TabContentWidget(ui->tabWidget);
     connect(newTab,SIGNAL(Event(QKeyEvent*)),this,SLOT(onKeyEvent2(QKeyEvent*)));
 
     ui->tabWidget->addTab(newTab,QString("Project %0").arg(ui->tabWidget->count()+1));
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
+
+
 }
 
 void MainWindow::closeTab(const int &index)
