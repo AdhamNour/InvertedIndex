@@ -1,3 +1,5 @@
+//implemented by Ziad Tarek
+
 #ifndef UTILS_H
 #define UTILS_H
 
@@ -7,7 +9,7 @@
 class Utils
 {
 public:
-    static QString HighLight(const QString& TargetWord ,const QString& OriginalText);
+    static QString HighLight(const QString& wordToBeReplaced ,const QString& OriginalText);
 
 };
 
