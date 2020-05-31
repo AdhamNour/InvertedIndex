@@ -7,4 +7,5 @@ Roles:
 2. Adham Nour El-Waffaa Mohammed : Implement UI , keyboard shortcut handling implementation 
 3. Ziad Tarek Hassan : Highlighting the target word. 
 4. Abdelhamied Amr Abdelhamied : Trie Node implementation and different encoding character search support
+5. Gerges Wageh Thabet : Contribute in TrieNode implementation 
 
